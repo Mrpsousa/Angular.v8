@@ -1,0 +1,25 @@
+<div class="row justify-content-sm-center my-5 mr-3 ml-3" >
+    <div *ngFor= "let i of count" class="col-sm-6 col-md-3">
+        <div class="card mb-5">
+            <img class="card-img-top" src="assets/eletronicos.jpg" style="width: 100%; height: 300px;">
+            <div class="card-body">
+                <h4 class="card-title">Eletrônicos {{i.id}} </h4>
+                <h6 class="card-subtitle mb-2 text-muted">Vitae porta ultricies</h6>
+                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit.</p>
+            </div>
+            <ul class="list-group-flush">
+                <li class="list-group-item">Celulares</li>
+                <li class="list-group-item">Relógios</li>
+                <li class="list-group-item">Fones</li>
+            </ul>
+
+            <div class="card-body">
+                <a href="#" class="card-link" data-toggle="modal" data-target="#siteModal">Donec</a>
+                <a href="#" class="card-link">Curabitur</a>
+
+            </div>
+            <div class="card-footer text-muted">
+                Confira nossos produtos.
+            </div>
+        </div>
+    </div>
