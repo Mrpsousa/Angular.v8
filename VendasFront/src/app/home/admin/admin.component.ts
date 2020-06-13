@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/core/services/product.service';
+import { Product } from 'src/app/core/models/product.model';
 
 @Component({
   selector: 'app-admin',
@@ -7,24 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ProductService) { }
 
-  public data = [
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-];
+ produto: Product[];
+
   title = 'angulardatatables';
   dtOptions: DataTables.Settings = {};
 
 
   ngOnInit() {
-    this.dtOptions = {
+    this.getProdutos();
+      this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
       processing: true
     };
-    this.data;
+    this.produto;
+  }
+
+
+  getProdutos(){
+    this.service.getProdutos().subscribe(data => {
+      this.produto = data;
+      //this.dtTrigger.next();
+    });
   }
 }

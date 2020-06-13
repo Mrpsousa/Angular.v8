@@ -19,21 +19,21 @@ produto: Product;
 //id:number;
 
 categoriaType=[
-                {'id':'1', 'nome':'ELETRÔNICO'},
+                {'id':'1', 'nome':'ELETRONICO'},
                 {'id':'2', 'nome':'PERFUME'},
                 {'id':'3', 'nome':'SAPATO'},
                 {'id':'', 'nome':'ROUPA'},
               ];
 
 public formErrors = {
-  nome_produto:'',
+  nome:'',
   descricao:'',
   categoria:'',
   valor:''
 }
 
 public validationMessages = {
-    nome_produto: {
+    nome: {
       required: 'campo obrigatório.',
     },
     descricao: {
@@ -56,31 +56,35 @@ constructor(
   super();
 }
 
+ngOnInit() {
+  this.buildForm();
+}
 
 buildForm() {
   this.form = this.formBuilder.group({
-    nome_produto: ['', Validators.required],
+    nome: ['', Validators.required],
     descricao: ['', Validators.required],
     categoria: ['', Validators.required],
     valor: ['', Validators.required]
   });
   this.form.valueChanges
       .subscribe(data => this.onValueChanged(data));
-
   this.onValueChanged(); //
 }
 
-ngOnInit() {
-  this.buildForm();
-}
+
 
 submit() {
-  console.log( this.form.value)
-  //Object.assign(this.produto, this.form.value);
-    this.service.saveProduct(this.produto).subscribe(
-      data => this.router.navigate(['/admin']),
-      // err => console.log(err)
-    )
+  var formData: any = new FormData();
+  formData.append("nome", this.form.get('nome').value)
+  formData.append("descricao", this.form.get('descricao').value)
+  formData.append("categoria", this.form.get('categoria').value)
+  formData.append("valor", this.form.get('valor').value)
+
+  this.service.save(formData).subscribe(
+    data => this.router.navigate(['/admin']),
+    // err => console.log(err)
+  )
 }
 
 }

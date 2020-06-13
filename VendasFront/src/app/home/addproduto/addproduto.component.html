@@ -9,13 +9,13 @@
             <div class="form-group col-sm-12 col-md-6 col-lg-4">
               <label for="nome">Nome do Produto <span class="text-danger">*</span></label>
               <input
-                formControlName="nome_produto"
+                formControlName="nome"
                 placeholder="Nome Produto"
                 class="form-control"
                 type="text"
-                [ngClass]="{'is-invalid': formErrors.nome_produto}" />
+                [ngClass]="{'is-invalid': formErrors.nome}" />
                 <div class="invalid-feedback" >
-                  {{ formErrors.nome_produto }}
+                  {{ formErrors.nome }}
                 </div>
             </div>
   
