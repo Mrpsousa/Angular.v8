@@ -59,7 +59,7 @@ ngOnInit() {
 
 
 getUsuario(){
-  this.service.getUsuarios().subscribe((usuario: Usuario[]) => {
+  this.service.getAll().subscribe((usuario: Usuario[]) => {
     this.usuario = usuario;
     console.log(this.usuario)
     //this.dtTrigger.next();

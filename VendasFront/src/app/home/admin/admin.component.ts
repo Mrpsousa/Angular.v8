@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
 
 
   getProdutos(){
-    this.service.getProdutos().subscribe(data => {
+    this.service.getAll().subscribe(data => {
       this.produto = data;
       //this.dtTrigger.next();
     });
